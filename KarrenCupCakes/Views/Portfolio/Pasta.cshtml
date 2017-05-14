@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Pasta";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                Pasta
+            </h1>
+            <ol class="breadcrumb">
+                <li>
+                    @Html.ActionLink("Home", "Index", "Home")
+                </li>
+                <li class="active">Pasta</li>
+            </ol>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h3 class="page-header">All Related Pasta Orders</h3>
+        </div>
+        @for (int i = 1; i < 5; i++)
+        {
+            <div class="col-sm-3 col-xs-6">
+                <img src="@Url.Content(string.Format("~/Images/Pasta/pasta_{0}.jpg", i))" class="img-responsive img-customer">
+            </div>
+        }
+    </div>
+    <div class="row well">
+        <div class="col-lg-8 col-md-8">
+            <h4>More pasta pictures on our facebook page.</h4>
+            <p>Check it out by clicking this link <a href="https://www.facebook.com/pg/karrencupcakes/photos/">here</a>.</p>
+        </div>
+    </div>
+</div>

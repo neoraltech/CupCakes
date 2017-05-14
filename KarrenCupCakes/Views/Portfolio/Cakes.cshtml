@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Cake and Cupcake";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                Cakes and Cupcakes
+            </h1>
+            <ol class="breadcrumb">
+                <li>
+                    @Html.ActionLink("Home", "Index", "Home")
+                </li>
+                <li class="active">Cakes and Cupcakes</li>
+            </ol>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h3 class="page-header">All Related Cake and Cupcake Orders</h3>
+        </div>
+        @for (int i = 1; i < 21; i++)
+        {
+            <div class="col-sm-3 col-xs-6">
+                <img src="@Url.Content(string.Format("~/Images/Cakes/cakes_{0}.jpg", i))" class="img-responsive img-customer">
+            </div>
+        }
+    </div>
+    <div class="row well">
+        <div class="col-lg-8 col-md-8">
+            <h4>More cakes and cupcakes pictures and designs on our facebook page.</h4>
+            <p>Check it out by clicking this link <a href="https://www.facebook.com/pg/karrencupcakes/photos/">here</a>.</p>
+        </div>
+    </div>
+</div>
