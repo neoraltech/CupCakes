@@ -6,6 +6,11 @@
 <script src="http://hubserver.apphb.com/Scripts/jquery.signalR-2.2.0.js"></script>
 <script src="http://hubserver.apphb.com/signalr/hubs"></script>
 <script type="text/javascript">
+    $(document).ready(function () {
+        $('#chatHead').show();
+        $('#chatBox').hide();
+    });
+
     $(function () {
 
         $.connection.hub.url = 'http://hubserver.apphb.com/signalr';
@@ -14,24 +19,25 @@
         $.connection.hub.start()
             .done(function () { console.log('Now connected, connectionID = ' + $.connection.hub.id); })
             .fail(function () { console.log('Could not connect!!'); });
+
+        $('#connect').click(function () {
+            var xname = $('#input1').val();
+            var xemail = $('#input2').val();
+            var xnumber = $('#input3').val();
+
+            if (xname == '' && xemail == '' && xnumber == '') {
+                alert('Please fill up the name, address and email! Thank you!');
+            }
+            else {
+                $('#chatHead').hide();
+                $('#chatBox').show();
+            };
+        });
     });
 </script>
 
 @*<script type="text/javascript">
     $(document).ready(function () {
-        $.connection.hub.url = 'http://localhost:52527/signalr';
-        var hub = $.connection.chatterHub;
-
-        $.connection.hub.start()
-            .done(function () { console.log('Now connected, connection ID=' + connection.id); })
-            .fail(function () { console.log('Could not connect'); });
-    });
-
-
-    function messageReceived() {
-        console.log('ping!');
-    };
-
     $('#connect').click(function () {
         var xname = $('#input1').val();
         var xemail = $('#input2').val();
@@ -114,20 +120,27 @@
             <div id="chatHead" class="row">
                 <div class="form-group col-lg-4">
                     <label for="input1">Name</label>
-                    <input type="text" id="input1" class="form-control" name="name">
+                    <input type="text" id="input1" class="form-control" name="name" />
                     <label for="input2">Email Address</label>
-                    <input type="email" id="input2" class="form-control" name="email">
+                    <input type="email" id="input2" class="form-control" name="email" />
                     <label for="input3">Phone Number</label>
-                    <input type="number" id="input3" class="form-control" name="number">
-                    @*<br/>*@
-                    @*<button class="btn btn-primary" id="connect" type="submit" style="float: right;">Connect</button>*@
+                    <input type="number" id="input3" class="form-control" name="number" />
+                    <br/>
+                    <button class="btn btn-primary" id="connect" type="submit" style="float: right;">Connect</button>
                 </div>
+            </div>
 
-                <div class="form-group col-lg-8">
-                    <label for="input4">Message</label>
-                    <textarea rows="10" type="text" id="input4" class="form-control" name="contact_message"></textarea>
+            <div id="chatBox" class="row">
+                <div class="form-group col-lg-12">
+                    <label for="sendMsg">Type message here:</label>
+                    <input type="text" id="sendMsg" class="form-control" name="msg" />
                     <br />
                     <button class="btn btn-primary" id="send" type="submit" style="float: right;">Send</button>
+                </div>
+
+                <div class="form-group col-lg-12">
+                    <label for="input4">Messages</label>
+                    <textarea rows="20" type="text" id="input4" class="form-control" name="contact_message"></textarea>
                 </div>
             </div>
         </div>
