@@ -2,13 +2,13 @@
     ViewBag.Title = "Contact";
 }
 
-<script src="http://localhost:52527/Scripts/jquery-2.2.0.js"></script>
-<script src="http://localhost:52527/Scripts/jquery.signalR-2.2.0.js"></script>
-<script src="http://localhost:52527/signalr/hubs"></script>
+<script src="http://hubserver.apphb.com/Scripts/jquery-2.2.0.js"></script>
+<script src="http://hubserver.apphb.com/Scripts/jquery.signalR-2.2.0.js"></script>
+<script src="http://hubserver.apphb.com/signalr/hubs"></script>
 <script type="text/javascript">
     $(function () {
 
-        $.connection.hub.url = 'http://localhost:52527/signalr';
+        $.connection.hub.url = 'http://hubserver.apphb.com/signalr';
         var hub = $.connection.chatterHub;
 
         $.connection.hub.start()
